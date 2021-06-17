@@ -1,9 +1,10 @@
 Oakland County Vehicle Center website build flow:
 
 1.
-    a. Creating migrations for vehicle database
-    b. Creating migrations for user database
-    c. Creating migrations for message board
+    a. Creating migration for vehicle database
+    b. Creating migration for user database
+    c. Creating migration for message board
+    d. Creating migration for storing the pictures
 2.
     a. Creating UserController. Responsible for:
         1. Creating New User (Sign up)
