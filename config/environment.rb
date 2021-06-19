@@ -10,3 +10,6 @@ ActiveRecord::Base.establish_connection(
 
 require './app/controllers/application_controller'
 require_all 'app'
+
+Paperclip.options[:command_path] = "/usr/local/bin/"
+

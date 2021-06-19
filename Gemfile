@@ -13,11 +13,6 @@ gem 'pry'
 gem 'bcrypt'
 gem 'tux'
 gem "paperclip", "~> 6.0.0"
-# gem 'carrierwave', '~> 2.0'
-# gem 'activesupport', '~> 5.0.0'
-# gem 'activemodel', '~> 4.2.11.3'
-
-
 
 group :test do
   gem 'rspec'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210617003744) do
+ActiveRecord::Schema.define(version: 20210619170746) do
 
   create_table "messages", force: :cascade do |t|
     t.string "user_id"
@@ -25,11 +25,15 @@ ActiveRecord::Schema.define(version: 20210617003744) do
   end
 
   create_table "vehicles", force: :cascade do |t|
-    t.string "year"
-    t.string "make"
-    t.string "model"
-    t.string "miles"
-    t.string "engine"
+    t.string   "year"
+    t.string   "make"
+    t.string   "model"
+    t.string   "miles"
+    t.string   "engine"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
 end
