@@ -11,29 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210619170746) do
+ActiveRecord::Schema.define(version: 20210627152009) do
 
-  create_table "messages", force: :cascade do |t|
-    t.string "user_id"
-    t.string "content"
+  create_table "listings", force: :cascade do |t|
+    t.string   "user_id"
+    t.string   "content"
+    t.string   "year"
+    t.string   "make"
+    t.string   "model"
+    t.string   "miles"
+    t.string   "engine"
+    t.string   "photos_file_name"
+    t.string   "photos_content_type"
+    t.integer  "photos_file_size"
+    t.datetime "photos_updated_at"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
     t.string "password_digest"
-  end
-
-  create_table "vehicles", force: :cascade do |t|
-    t.string   "year"
-    t.string   "make"
-    t.string   "model"
-    t.string   "miles"
-    t.string   "engine"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
   end
 
 end
