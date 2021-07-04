@@ -2,6 +2,8 @@ require_relative "spec_helper"
 
 def app
   ApplicationController
+  UsersController
+  ListingsController
 end
 
 describe ApplicationController do

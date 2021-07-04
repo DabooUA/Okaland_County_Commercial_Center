@@ -90,6 +90,4 @@ class ListingsController < ApplicationController
           redirect to '/login'
         end
       end
-
-
 end
