@@ -1,0 +1,16 @@
+<h2> Welcome, <%= current_user.username %></h2>
+<h3> Your Listings </h3>
+
+<p><% @listings.each do |listing| %>
+    
+    <% if !lising.content.empty? %>
+      <div>
+      <%= lising.content %>
+      </div>
+    <%else%>
+      <h1>No listings!</h1>
+    <%end%>
+     
+<%end%>
+<a href="/lisings/new">Create New Lising</a><br>
+<a href="/logout">Log Out</a><br>
