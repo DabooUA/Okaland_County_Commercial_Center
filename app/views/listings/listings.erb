@@ -3,14 +3,14 @@
 
 <p><% @listings.each do |listing| %>
     
-    <% if !lising.content.empty? %>
+    <% if !listing.content.empty? %>
       <div>
-      <%= lising.content %>
+      <%= listing.content %>
       </div>
     <%else%>
       <h1>No listings!</h1>
     <%end%>
      
 <%end%>
-<a href="/lisings/new">Create New Lising</a><br>
+<a href="/listings/new">Create New Listing</a><br>
 <a href="/logout">Log Out</a><br>

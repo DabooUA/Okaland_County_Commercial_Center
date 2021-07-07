@@ -1,0 +1,9 @@
+<h2> Your New Listing: </h2>
+<p><%= @listings.content %></p>
+
+<form method="POST" action="/listings/<%= @listing.id %>/delete">
+    <input id="hidden" type="hidden" name="_method" value="Delete">
+    <input type="submit" value="Delete Listing">
+</form>
+
+<a href="/listings/<%= @listing.id %>/edit"> Edit Listing </a>

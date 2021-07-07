@@ -23,7 +23,7 @@ class UsersController < ApplicationController
         if !logged_in?
             erb :'users/login'
         else
-            redirect to '/listings/listings'
+            redirect to '/listings'
         end
     end
 
@@ -31,11 +31,10 @@ class UsersController < ApplicationController
         @user = User.find_by(:username => params[:username])
             if @user && @user.authenticate(params[:password])
                 session[:user_id] = @user.id
-                redirect to '/listings/listings'
+                redirect to '/listings'
             else
                 redirect to '/signup'
             end
-        
     end
 
     get "/logout" do

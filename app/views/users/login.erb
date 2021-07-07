@@ -1,21 +1,22 @@
 
-<style>
+<%# <style>
         ul {
-            list-style-type: square;
+            list-style-type: inside;
         }
-</style>
+</style> %>
 
-<p>
+
 <h2>Please Log in:</h2>
+<p>
         <ul>
             <li>To view the vehicle listings</li>
-            <li>Message the seller</li>
-            <li>Create or Edit listing(s)</li>
+            <li>To message the seller</li>
+            <li>To create or Edit listing(s)</li>
         </ul>
 </p>
 <form method="POST" action="/login">
-    <input type="text" name="username" placeholder="Username">
-    <input type="password" name="password" placeholder="Password">
+    <input type="text" name="username" placeholder="Username"><br>
+    <input type="password" name="password" placeholder="Password"><br><br>
 
-    <input type="submit" value="submit">
+    <input type="submit" value="Submit">
 </form>
