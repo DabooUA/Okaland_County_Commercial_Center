@@ -22,4 +22,14 @@ class ApplicationController < Sinatra::Base
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
+  def create
+    @current_user = User.create(current_user_params)
+  end
+  
+  private
+  
+  def current_user_params
+    params.require(:user).permit(:avatar)
+  end
+
 end
