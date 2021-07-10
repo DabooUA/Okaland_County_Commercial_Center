@@ -1,15 +1,30 @@
 <h1>Create your listing below</h1>
   <form action="/listings" method="POST">
-    <p>
-    Title:  <input type="text" name="title" style="width:800px;"></p>
-    <br>
-    Year:   <input type="text" name="year"><br><br>
-    Make:   <input type="text" name="make"><br><br>
-    Model:  <input type="text" name="model"><br><br>
-    Miles:  <input type="text" name="miles"><br><br>
-    Engine: <input type="text" name="engine"><br><br>
+    
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title" style="width:100%;"><br><br><br>
+    <label for="year">Choose a year:</label><br>
+    <input type="number" id="year" min="1900" max="2021" step="1" value="2021"><br><br>
+    
+    <label for="make">Make:</label><br>
+    <input type="text" id="make" name="make"><br>
+    <label for="model">Model:</label><br>
+    <input type="text" id="model" name="model"><br>
+    <label for="miles">Miles:</label><br>
+    <input type="text" id="miles" name="miles"><br>
+    <label for="engine">Select engine size:</label><br>
+    <%# <input type="text" id="engine" name="engine"><br><br> %>
+    <select name="engine" id="engine">
+      <option value=""></option>
+      <option value="3 cylinder">3 cylinder</option>
+      <option value="4 cylinder">4 cylinder</option>
+      <option value="6 cylinder">6 cylinder</option>
+      <option value="8 cylinder">8 cylinder</option>
+    </select> <br><br>
+
     Description:<br>
-    <input type="text" name="content" style="height:120px; width:800px;"><br><br>
+    <%# <input type="text" name="content" style="height:120px; width:100%;"><br><br> %>
+    <textarea name="content" id="content" style="height:120px; width:100%;"></textarea><br><br>
      
     <input type="submit" value="Submit">
   </form>

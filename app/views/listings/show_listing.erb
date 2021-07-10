@@ -1,4 +1,9 @@
 <h2> Your New Listing: </h2>
+<p><%= @listings.title %></p>
+<p><%= @listings.year %></p>
+<p><%= @listings.make %></p>
+<p><%= @listings.model %></p>
+<p><%= @listings.miles %></p>
 <p><%= @listings.content %></p>
 
 <form method="POST" action="/listings/<%= @listing.id %>/delete">
