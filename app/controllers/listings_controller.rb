@@ -23,7 +23,7 @@ class ListingsController < ApplicationController
           if params[:content] == ""
             redirect to "/listings/new"
           else
-            @listing = current_user.listings.build(content: params[:content], photos: params[:photos])
+            @listing = current_user.listings.build(content: params[:content])
             if @listing.save
               redirect to "/listings/#{@listing.id}"
             else
@@ -37,7 +37,7 @@ class ListingsController < ApplicationController
 
     get '/listings/:id' do
         if logged_in?
-            @listing = listing.find_by_id(params[:id])
+            @listing = Listing.find_by_id(params[:id])
             erb :'listings/show_listing'
         else
             redirect to '/login'

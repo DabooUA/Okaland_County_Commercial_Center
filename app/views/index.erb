@@ -6,20 +6,19 @@ div.a {
 
 
 <div class = "a">
-<h1>Welcome to Okland County Vehicle Center</h1>
-
-<p><h2>Where you can find your next vehicle or sell your current one</h2>
-
-<p><h2>Please Log in or Sign Up below:</h2></p>
 
 <nav>
   <% if logged_in? %>
-
+    <p>Welcome, <%= current_user.username %></p>
     <a href="/listings/new"> Create Listing </a><br><br>
     <a href="/logout"> Log Out </a>
-    <p>Welcome, <%= current_user.username %></p>
 
   <% else %>
+    <h1>Welcome to Okland County Vehicle Center</h1>
+
+    <p><h2>Where you can find your next vehicle or sell your current one</h2>
+
+    <p><h2>Please Log in or Sign Up below:</h2></p>
     <a href="/login">Log In</a><br>
     <a href="/signup">Sign Up</a><br>
     
