@@ -1,14 +1,21 @@
-<h2> Your New Listing: </h2>
-<p><%= @listings.title %></p>
-<p><%= @listings.year %></p>
-<p><%= @listings.make %></p>
-<p><%= @listings.model %></p>
-<p><%= @listings.miles %></p>
-<p><%= @listings.content %></p>
+<h1> Your New Listing: </h1>
+<h2 style="text-decoration: underline;"><%= @listing.title %></h2>
+<p>
+    <ul>
+        <li><%= @listing.year %></li>
+        <li><%= @listing.make %></li>
+        <li><%= @listing.model %></li>
+        <li><%= @listing.miles %> miles</li>
+        <li><%= @listing.engine %></li>
+        
+    </ul>
+</p>
 
+<p><%= @listing.content %></p>
 <form method="POST" action="/listings/<%= @listing.id %>/delete">
     <input id="hidden" type="hidden" name="_method" value="Delete">
     <input type="submit" value="Delete Listing">
+    <a href="/listings/<%= @listing.id %>/edit"><input type="button" value="Edit Lising"> </a>
 </form>
 
-<a href="/listings/<%= @listing.id %>/edit"> Edit Listing </a>
+

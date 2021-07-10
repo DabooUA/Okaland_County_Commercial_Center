@@ -23,7 +23,7 @@ class ListingsController < ApplicationController
           if params[:content] == ""
             redirect to "/listings/new"
           else
-            @listing = current_user.listings.build(title: params[:title], year:[:year], make: params[:make], model: params[:model], miles: params[:miles], content: params[:content])
+            @listing = current_user.listings.build(title: params[:title], year: params[:year], make: params[:make], model: params[:model], miles: params[:miles], engine: params[:engine], content: params[:content])
             if @listing.save
               redirect to "/listings/#{@listing.id}"
             else
