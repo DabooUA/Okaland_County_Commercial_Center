@@ -1,14 +1,17 @@
 <h2> Welcome, <%= current_user.username %></h2>
-<h3> Your Listings </h3>
+<h3> Here are you can see all the current listings </h3>
 
 <p><% @listings.each do |listing| %>
     
     <% if listing.empty? %>
         <h1>You currently do not have any listings!</h1>
     <%else%>
-        <div>
-        <%= listing.content %>
-        </div>
+        <p>
+            <div>
+            <%= listing.title %>
+            <%= listing.content%>
+            </div>
+        </p>
     <%end%>
      
 <%end%>

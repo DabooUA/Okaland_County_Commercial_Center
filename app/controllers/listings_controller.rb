@@ -2,7 +2,7 @@ class ListingsController < ApplicationController
 
     get '/listings' do
         if logged_in?
-            @listings = Listing.all 
+            @listing = Listing.all 
             erb :'/listings/listings' 
         else
             redirect to '/login'
@@ -38,7 +38,7 @@ class ListingsController < ApplicationController
     get '/listings/:id' do
         if logged_in?
             @listing = Listing.find_by_id(params[:id])
-            erb :'listings/show_listing'
+            erb :'/listings/show_listing'
         else
             redirect to '/login'
         end

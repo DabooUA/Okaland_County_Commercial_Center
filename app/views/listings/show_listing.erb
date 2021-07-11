@@ -14,8 +14,11 @@
 <p><%= @listing.content %></p>
 <form method="POST" action="/listings/<%= @listing.id %>/delete">
     <input id="hidden" type="hidden" name="_method" value="Delete">
+    <a href="/listings/listings"><input type="button" value="Home"> </a>
+    <a href="/listings/<%= @listing.id %>/edit"><input type="button" value="Edit Listing"> </a>
+    
     <input type="submit" value="Delete Listing">
-    <a href="/listings/<%= @listing.id %>/edit"><input type="button" value="Edit Lising"> </a>
 </form>
+
 
 
