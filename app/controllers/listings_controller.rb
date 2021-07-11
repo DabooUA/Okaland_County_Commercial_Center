@@ -64,7 +64,7 @@ class ListingsController < ApplicationController
             else
                 @listing = Listing.find_by_id(params[:id])
                 if @listing && @listing.user == current_user
-                    if @listing.update(content: params[:content])
+                    if @listing.update(title: params[:title], year: params[:year], make: params[:make], model: params[:model], miles: params[:miles], engine: params[:engine], content: params[:content])
                         redirect to "/listings/#{@listing.id}"
                     else
                         redirect to "listings/#{@listing.id}/edit"

@@ -2,6 +2,29 @@
 
 <form method="post" action="/listings/<%=@listing.id%>">
     <input id="hidden" type="hidden" name="_method" value="PATCH">
-    <input type="text" name="content" value="<%= @listing.content %>">
+    <label for="title">Title:</label><br>
+    <input type="text" name="title" value="<%= @listing.title %>" style="width:100%;"><br><br>
+    <label for="year">Year:</label><br>
+    <input type="number" id="year" name="year" min="1900" max="2021" step="1" value="<%= @listing.year %>"><br><br>
+    <label for="make">Make:</label><br>
+    <input type="text" name="make" value="<%= @listing.make %>"><br><br>
+    <label for="model">Model:</label><br>
+    <input type="text" name="model" value="<%= @listing.model %>"><br><br>
+    <label for="miles">Miles:</label><br>
+    <input type="text" name="miles" value="<%= @listing.miles %>"><br><br>
+    <label for="engine">Select engine size:</label><br>
+    <select name="engine" id="engine" style="width=auto">
+      <option value="<%= @listing.engine %>"><%= @listing.engine %></option>
+      <option value="3 cylinder">3 cylinder</option>
+      <option value="4 cylinder">4 cylinder</option>
+      <option value="5 cylinder">5 cylinder</option>
+      <option value="6 cylinder">6 cylinder</option>
+      <option value="8 cylinder">8 cylinder</option>
+    </select> <br><br>
+
+    <label for="content">Description:</label><br>
+
+    <textarea name="content" id="content" style="height:120px; width:100%; line-height:1em; overflow:auto; padding:10px;"><%= @listing.content %></textarea><br><br>
+
     <input type="submit" value="Submit">
 </form>
