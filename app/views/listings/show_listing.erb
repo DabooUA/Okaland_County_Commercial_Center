@@ -11,7 +11,11 @@
     </ul>
 </p>
 
-<img src="/images/listings/<%= @listing.id%>.jpg">
+<% if File.exist?("public/images/listings/#{@listing.id}.jpg" ) %>
+    <img src="/images/listings/<%= @listing.id%>.jpg">
+<% else %>
+    <h3 style="color:red;">Image is Missing</h3>
+<% end %>
 
 <p><%= @listing.content %></p>
 
@@ -20,8 +24,6 @@
     <input type="submit" value="Delete Listing">
 
 </form><br>
-
-
 
 <a href="/listings"><input type="button" value="Home"> </a>
 <a href="/listings/<%= @listing.id %>/edit"><input type="button" value="Edit Listing"> </a>
