@@ -22,9 +22,15 @@
       <option value="8 cylinder">8 cylinder</option>
     </select> <br><br>
 
+    <label for="listings_image"> 
+      Picture:
+    </label><br>
+      <input type="file" name="listings_image"><br><br>
+
     <label for="content">Description:</label><br>
 
     <textarea name="content" id="content" style="height:120px; width:100%; line-height:1em; overflow:auto; padding:10px; resize: none;"><%= @listing.content %></textarea><br><br>
 
     <input type="submit" value="Submit">
+    <a href="/listings"><input type="button" value="Home"> </a>
 </form>

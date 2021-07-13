@@ -1,19 +1,14 @@
 <h2> Welcome, <%= current_user.username %></h2>
-<h3> Here are you can see all the current listings </h3>
+<h3> Here are you can see all your current listings: </h3>
 
 <p><% @listings.each do |listing| %>
-    
-    <% if listing.empty? %>
-        <h1>You currently do not have any listings!</h1>
-    <%else%>
         <p>
             <div>
-            <%= listing.title %>
-            <%= listing.content%>
+                <ul>
+                    <li><a href="/listings/<%= listing.id %>"><%= listing.title %></a></li>
+                </ul>
             </div>
         </p>
-    <%end%>
      
 <%end%>
-<a href="/listings/new">Create New Listing</a><br><br>
-<a href="/logout">Log Out</a><br>
+<a href="/listings/new"><input type="button" value="Create New Listing"> </a> <a href="/logout"><input type="button" value="Log Out"> </a><br>

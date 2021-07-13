@@ -1,5 +1,5 @@
 <h1><%= current_user.username %>, create your listing below</h1>
-  <form action="/listings" method="POST">
+  <form action="/listings" method="POST" enctype="multipart/form-data">
     
     <label for="title">Title:</label><br>
     <input type="text" id="title" name="title" style="width:100%;"><br><br><br>
@@ -22,7 +22,10 @@
       <option value="6 cylinder">6 cylinder</option>
       <option value="8 cylinder">8 cylinder</option>
     </select> <br><br>
-
+    <label for="listings_image"> 
+      Picture:
+    </label><br>
+      <input type="file" name="listings_image"><br><br>
     <label for="content">Description:</label><br><br>
     <textarea name="content" id="content" style="height:120px; width:100%; resize: none;"></textarea><br><br>
      

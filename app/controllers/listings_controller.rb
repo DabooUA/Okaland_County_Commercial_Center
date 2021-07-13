@@ -2,7 +2,7 @@ class ListingsController < ApplicationController
 
     get '/listings' do
         if logged_in?
-            @listing = Listing.all 
+            @listings = Listing.all 
             erb :'/listings/listings' 
         else
             redirect to '/login'
@@ -25,6 +25,12 @@ class ListingsController < ApplicationController
           else
             @listing = current_user.listings.build(title: params[:title], year: params[:year], make: params[:make], model: params[:model], miles: params[:miles], engine: params[:engine], content: params[:content])
             if @listing.save
+              @filename = "#{@listing.id}.jpg"
+              file = params[:listings_image][:tempfile]
+
+              File.open("./public/images/listings/#{@filename}", 'wb') do |f|
+                f.write(file.read)
+              end
               redirect to "/listings/#{@listing.id}"
             else
               redirect to "/listings/new"
@@ -67,7 +73,7 @@ class ListingsController < ApplicationController
                     if @listing.update(title: params[:title], year: params[:year], make: params[:make], model: params[:model], miles: params[:miles], engine: params[:engine], content: params[:content])
                         redirect to "/listings/#{@listing.id}"
                     else
-                        redirect to "listings/#{@listing.id}/edit"
+                        redirect to "/listings/#{@listing.id}/edit"
                     end
                 else
                     redirect to '/listings'
