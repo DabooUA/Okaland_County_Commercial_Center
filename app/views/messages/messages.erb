@@ -1,0 +1,17 @@
+<h2> Welcome, <%= current_user.username %></h2>
+<h3> Messages </h3>
+
+<p><% @messages.each do |m| %>
+    
+    <% if !m.cont.empty? %>
+      <div>
+      <%= m.cont %>
+      </div>
+    <%else%>
+      <h3 style="color:red;">No messages!</h3>
+    <%end%>
+     
+<%end%>
+
+<a href="/listings"><input type="button" value="Home"> </a><br>
+<a href="/logout">Log Out</a><br>

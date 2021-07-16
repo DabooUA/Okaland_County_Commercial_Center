@@ -7,5 +7,5 @@ end
 use Rack::MethodOverride
 use UsersController
 use ListingsController
-use VehiclesController
+use MessagesController
 run ApplicationController

@@ -10,73 +10,39 @@ class MessagesController < ApplicationController
     end
 
     get '/messages/new' do
-        if logged_in?
             @users = current_user
             erb :'/messages/create_message'
-        else
-            redirect to '/login'
-        end
     end
 
     post '/messages' do
-        if logged_in?
-          if params[:content] == ""
-            redirect to "/messages/new"
-          else
-            @message = current_user.messages.build(content: params[:content])
+				if logged_in?
+					if params[:cont] ==""
+						redirect to "/messages/new"
+					else
+            @message = current_user.messages.build(cont: params[:cont])
             if @message.save
-              redirect to "/messages/#{@message.id}"
-            else
-              redirect to "/messages/new"
-            end
-          end
-        else
-          redirect to '/login'
-        end
-      end
-
-    get '/messages/:id' do
-        if logged_in?
-            @message = Message.find_by_id(params[:id])
-            erb :'messages/show_message'
-        else
-            redirect to '/login'
-        end
+            	redirect to "/messages/#{@message.id}"
+						else
+							redirect to "/messages/new"
+						end
+					end
+				end
     end
 
-    get '/messages/:id/edit' do
-        if logged_in?
+    get '/messages/:id' do
             @message = Message.find_by_id(params[:id])
-                if @message && @message.user == current_user
-                    erb :'/messages/edit_message'
-                else
-                    redirect to '/messages'
-                end
-        else
-            redirect to '/login'
-        end
+            erb :'messages/show_message'
     end
 
     patch '/messages/:id' do
-        if logged_in?
-            if params[:content] == ""
-                redirect to "/messages/#{params[:id]}/edit"
+       
+            if params[:cont] == ""
+                redirect to "/messages/#{params[:id]}"
             else
                 @message = Message.find_by_id(params[:id])
-                if @message && @message.user == current_user
-                    if @message.update(content: params[:content])
-                        redirect to "/messages/#{@message.id}"
-                    else
-                        redirect to "messages/#{@message.id}/edit"
-                    end
-                else
-                    redirect to '/messages'
-                end
-            end
-        else
-            redirect to '/login'
-        end
-
+                @message && @message.user == current_user
+              	@message.update(cont: params[:cont])	 
+						end
     end
 
 end

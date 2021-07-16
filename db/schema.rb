@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20210627193121) do
 
   create_table "messages", force: :cascade do |t|
     t.string "user_id"
-    t.string "content"
+    t.string "cont"
   end
 
   create_table "users", force: :cascade do |t|

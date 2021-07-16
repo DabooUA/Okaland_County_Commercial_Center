@@ -25,15 +25,15 @@ class ListingsController < ApplicationController
           else
             @listing = current_user.listings.build(title: params[:title], year: params[:year], make: params[:make], model: params[:model], miles: params[:miles], engine: params[:engine], content: params[:content])
             if @listing.save
-              @filename = "#{@listing.id}.jpg"
-              file = params[:listings_image][:tempfile]
+               @filename = "#{@listing.id}.jpg"
+               file = params[:listings_image][:tempfile]
 
-              File.open("./public/images/listings/#{@filename}", 'wb') do |f|
-                f.write(file.read)
-              end
-              redirect to "/listings/#{@listing.id}"
+               File.open("./public/images/listings/#{@filename}", 'wb') do |f|
+                 f.write(file.read)
+               end
+               redirect to "/listings/#{@listing.id}"
             else
-              redirect to "/listings/new"
+               redirect to "/listings/new"
             end
           end
         else
