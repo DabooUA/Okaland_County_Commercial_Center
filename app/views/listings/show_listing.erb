@@ -17,11 +17,10 @@
     <h3 style="color:red;">Image is Missing</h3>
 <% end %>
 
-<a href="/messages/new"><input type="button" value="Leave your Message!!!"></a>
-
 
 <p><%= @listing.content %></p>
-<% if @listing && @listing.user == current_user %>
+    <% if @listing && @listing.user == current_user %>
+    <a href="/messages"><input type="button" value="Check for Messages"></a><br><br>
 <form method="POST" action="/listings/<%= @listing.id %>/delete">
     <input id="hidden" type="hidden" name="_method" value="Delete">
     <input type="submit" value="Delete Listing">
@@ -30,9 +29,11 @@
 
 <a href="/listings/<%= @listing.id %>/edit"><input type="button" value="Edit Listing"> </a><br><br>
 <a href="/listings"><input type="button" value="Home"> </a>
-<% else %>
+
+    <% else %>
 <a href="/listings"><input type="button" value="Home"> </a>
-<% end %>
+<a href="/messages/new"><input type="button" value="Leave a Message!!!"></a>
+    <% end %>
 
 
 
