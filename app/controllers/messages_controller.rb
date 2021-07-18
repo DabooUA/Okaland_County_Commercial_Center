@@ -16,10 +16,10 @@ class MessagesController < ApplicationController
 
     post '/messages' do
 				if logged_in?
-					if params[:cont] ==""
+					if params[:content] ==""
 						redirect to "/messages/new"
 					else
-            @message = current_user.messages.build(cont: params[:cont])
+            @message = current_user.messages.build(content: params[:content])
             if @message.save
             	redirect to "/messages/#{@message.id}"
 						else
@@ -36,12 +36,12 @@ class MessagesController < ApplicationController
 
     patch '/messages/:id' do
        
-            if params[:cont] == ""
+            if params[:content] == ""
                 redirect to "/messages/#{params[:id]}"
             else
                 @message = Message.find_by_id(params[:id])
                 @message && @message.user == current_user
-              	@message.update(cont: params[:cont])	 
+              	@message.update(content: params[:content])	 
 						end
     end
 

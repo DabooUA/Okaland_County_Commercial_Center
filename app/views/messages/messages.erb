@@ -3,9 +3,9 @@
 
 <p><% @messages.each do |m| %>
     
-    <% if !m.cont.empty? %>
+    <% if !m.content.empty? %>
       <div>
-      <%= m.cont %>
+      <%= m.content %>
       </div>
     <%else%>
       <h3 style="color:red;">No messages!</h3>
