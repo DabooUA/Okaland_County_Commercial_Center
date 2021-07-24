@@ -2,19 +2,21 @@
 
 <a href="/listings"><input type="button" value="Home"> </a><br>
 
-<h3> Messages </h3>
+<h3> Messages: </h3>
+    <% if @messages.empty? %>
+    <h3 style="color:red;">No messages!</h3>
+    <% else %>
+            <p><% @messages.each do |m| %>
+            <div>
+              <%= m.content %>
+              From user, <%= m.user_id%>
+            </div>
+        <%end%>
 
-<p><% @messages.each do |m| %>
-    
-    <% if !m.content.empty? %>
-      <div>
-      <%= m.content %>
-      </div>
-    <%else%>
-      <h3 style="color:red;">No messages!</h3>
-    <%end%>
-     
-<%end%>
+ <% end %>   
+
+
+
 </p>
 <a href="/messages/new"><input type="button" value="Reply"></a><br><br>
 <a href="/logout"><input type="button" value="Log Out"></a><br>

@@ -41,6 +41,16 @@ class ListingsController < ApplicationController
         end
       end
 
+        get '/listings/:id/messages' do
+          if logged_in? 
+              @listing = Listing.find_by_id(params[:id])
+              @messages = @listing.message
+              erb :'/messages/messages'
+          else
+              redirect to '/login'
+          end
+        end
+
     get '/listings/:id' do
         if logged_in?
             @listing = Listing.find_by_id(params[:id])

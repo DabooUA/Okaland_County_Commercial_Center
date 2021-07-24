@@ -10,8 +10,8 @@ class MessagesController < ApplicationController
     end
 
     get '/messages/new' do
-            @users = current_user
-            erb :'/messages/create_message'
+      @users = current_user
+      erb :'/messages/create_message'
     end
 
     post '/messages' do
@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
 					if params[:content] ==""
 						redirect to "/messages/new"
 					else
-            @message = current_user.messages.build(content: params[:content])
+            @message = current_user.messages.build(content: params[:content], listing_id: params[:listing_id])
             if @message.save
             	redirect to "/messages/#{@message.id}"
 						else
@@ -30,19 +30,18 @@ class MessagesController < ApplicationController
     end
 
     get '/messages/:id' do
-            @message = Message.find_by_id(params[:id])
-            erb :'messages/show_message'
+      @message = Message.find_by_id(params[:id])
+      erb :'messages/show_message'
     end
 
     patch '/messages/:id' do
        
-            if params[:content] == ""
-                redirect to "/messages/#{params[:id]}"
-            else
-                @message = Message.find_by_id(params[:id])
-                @message && @message.user == current_user
-              	@message.update(content: params[:content])	 
-						end
+      	if params[:content] == ""
+          redirect to "/messages/#{params[:id]}"
+        else
+          @message = Message.find_by_id(params[:id])
+          @message && @message.user == current_user
+          @message.update(content: params[:content])	 
+				end
     end
-
 end
