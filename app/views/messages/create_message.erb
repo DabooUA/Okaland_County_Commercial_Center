@@ -1,6 +1,6 @@
 <h2>Leave your message below:</h2>
   <form action="/messages" method="POST"> 
-    <input type="hidden" name="listing_id" value="<%= @listing_id %>">
+    <input type="hidden" name="listing_id" value="<%= @listing.id %>">
     <textarea name="content" id="content" placeholder="Type your questions and answers in this box." style="height:120px; width:100%; resize: none;"></textarea><br><br>
     <br>
     <input type="submit" value="Submit">

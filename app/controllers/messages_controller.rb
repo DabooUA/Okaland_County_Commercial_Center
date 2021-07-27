@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
 
-    get '/messages' do
+    get '/listings/:listing_id/messages' do
         if logged_in?
             @messages = Message.all 
             erb :'/messages/messages' 
@@ -9,9 +9,11 @@ class MessagesController < ApplicationController
         end
     end
 
-    get '/messages/new' do
-      @users = current_user
-      erb :'/messages/create_message'
+    get '/listings/:listing_id/messages/new' do
+			@users = current_user
+			@listing = Listing.find_by_id(params[:listing_id])
+			@messages = @listing.message
+			erb :'/messages/create_message'   
     end
 
     post '/messages' do
@@ -21,27 +23,27 @@ class MessagesController < ApplicationController
 					else
             @message = current_user.messages.build(content: params[:content], listing_id: params[:listing_id])
             if @message.save
-            	redirect to "/messages/#{@message.id}"
+            	redirect to "/listings/#{params[:listing_id]}/messages/#{@message.id}"
 						else
-							redirect to "/messages/new"
+							redirect to "/listings/#{params[:listing_id]}/messages/new"
 						end
 					end
 				end
     end
 
-    get '/messages/:id' do
+    get '/listings/:listing_id/messages/:id' do
       @message = Message.find_by_id(params[:id])
       erb :'messages/show_message'
     end
 
-    patch '/messages/:id' do
+    patch '/listings/:listing_id/messages/:id' do
        
       	if params[:content] == ""
           redirect to "/messages/#{params[:id]}"
         else
           @message = Message.find_by_id(params[:id])
           @message && @message.user == current_user
-          @message.update(content: params[:content])	 
+          @message.update(content: params[:content], listing_id: params[:listing_id])	 
 				end
     end
 end

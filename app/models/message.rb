@@ -1,7 +1,6 @@
 class Message < ActiveRecord::Base
-    belongs_to :listings
-    belongs_to :users
-    # has_many :users, through: :listings
-  
+    belongs_to :listing
+    belongs_to :user
+ 
     validates :content, presence: true
 end

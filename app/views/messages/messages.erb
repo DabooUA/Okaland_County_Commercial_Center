@@ -9,7 +9,9 @@
             <p><% @messages.each do |m| %>
             <div>
               <%= m.content %>
-              From user, <%= m.user_id%>
+          
+
+              From user, <%= m.user.username %>
             </div>
         <%end%>
 

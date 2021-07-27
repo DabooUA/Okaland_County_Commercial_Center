@@ -1,7 +1,6 @@
 require './config/environment'
 
 class ApplicationController < Sinatra::Base
-  include Paperclip::Glue
   
   configure do
     set :public_folder, 'public'
@@ -24,12 +23,6 @@ class ApplicationController < Sinatra::Base
 
   def create
     @current_user = User.create(current_user_params)
-  end
-  
-  private
-  
-  def current_user_params
-    params.require(:user).permit(:avatar)
   end
 
 end
