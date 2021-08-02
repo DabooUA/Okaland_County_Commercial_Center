@@ -1,6 +1,6 @@
 <h2> Welcome, <%= current_user.username %></h2>
 
-<a href="/listings"><input type="button" value="Home"> </a><br>
+<a href="/listings"><input type="button" value="Home"></a><br>
 
 <h3> Messages: </h3>
   <% @listing = Listing.find_by_id(params[:listing_id]) %>
