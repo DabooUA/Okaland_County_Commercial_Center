@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
     get '/listings/:listing_id/messages/new' do
 			@users = current_user
 			@listing = Listing.find_by_id(params[:listing_id])
-			@messages = @listing.message
+			@messages = @listing.messages
 			erb :'/messages/create_message'   
     end
 
