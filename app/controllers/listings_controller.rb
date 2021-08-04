@@ -25,12 +25,13 @@ class ListingsController < ApplicationController
           else
             @listing = current_user.listings.build(title: params[:title], year: params[:year], make: params[:make], model: params[:model], miles: params[:miles], engine: params[:engine], content: params[:content])
             if @listing.save
-               @filename = "#{@listing.id}.jpg"
-               file = params[:listings_image][:tempfile]
-
-               File.open("./public/images/listings/#{@filename}", 'wb') do |f|
-                 f.write(file.read)
-               end
+               if params[:listings_image]
+                  @filename = "#{@listing.id}.jpg"
+                  file = params[:listings_image][:tempfile]
+                  File.open("./public/images/listings/#{@filename}", 'wb') do |f|
+                        f.write(file.read)
+                  end                      
+                end
                redirect to "/listings/#{@listing.id}"
             else
                redirect to "/listings/new"
@@ -71,6 +72,13 @@ class ListingsController < ApplicationController
                 @listing = Listing.find_by_id(params[:id])
                 if @listing && @listing.user == current_user
                     if @listing.update(title: params[:title], year: params[:year], make: params[:make], model: params[:model], miles: params[:miles], engine: params[:engine], content: params[:content])
+                      if params[:listings_image]
+                        @filename = "#{@listing.id}.jpg"
+                        file = params[:listings_image][:tempfile]
+                        File.open("./public/images/listings/#{@filename}", 'wb') do |f|
+                              f.write(file.read)
+                        end                      
+                      end
                         redirect to "/listings/#{@listing.id}"
                     else
                         redirect to "/listings/#{@listing.id}/edit"
