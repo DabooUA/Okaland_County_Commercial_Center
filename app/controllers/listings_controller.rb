@@ -2,7 +2,8 @@ class ListingsController < ApplicationController
 
     get '/listings' do
         if logged_in?
-            @listings = Listing.all 
+            # @listings = Listing.all 
+            @listings = current_user.listings
             erb :'/listings/listings' 
         else
             redirect to '/login'
